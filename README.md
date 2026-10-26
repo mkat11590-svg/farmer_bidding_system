@@ -175,20 +175,6 @@ The backend is split into focused modules. Adjust the folder names below to matc
 └── database/      # SQL schema
 ```
 
-## Screenshots
-
-<!--
-Add screenshots to docs/screenshots/ and uncomment these lines.
-
-| Homepage | Auction details |
-|----------|-----------------|
-| ![Homepage](docs/screenshots/home.png) | ![Auction](docs/screenshots/auction.png) |
-
-| Farmer dashboard | Admin panel |
-|------------------|-------------|
-| ![Dashboard](docs/screenshots/dashboard.png) | ![Admin](docs/screenshots/admin.png) |
--->
-
 ## Roadmap
 
 **Next up**
@@ -216,10 +202,3 @@ Add screenshots to docs/screenshots/ and uncomment these lines.
 | Name | Role |
 |------|------|
 | Muhammad Abdullah Tariq | CEO & Founder |
-| Zubair Maqsood | Chief Technology Officer |
-| Daud Ibrahim | Head of Operations |
-| M. Hannan Shoaib | Customer Success Lead |
-
-## License
-
-Add a license for the project here (for example MIT) and include the matching `LICENSE` file in the repository.
