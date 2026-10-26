@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page - Farm Auction System</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../css/bootstrap/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/login.css">
+
+</head>
+
+<body class="d-flex align-items-center justify-content-center min-vh-100">
+
+    <div class="container login-container w-100">
+        <div class="row">
+
+            <!-- LEFT SIDE -->
+            <div class="col-lg-6 col-md-6 col-sm-12 left">
+                <h2>Welcome</h2>
+                <h1>Log In your Account</h1>
+
+                <form id="loginForm" action="../php/auth/login_process.php" method="POST">
+                    <label for="email">Username</label>
+                    <input type="email" id="email" name="email" required placeholder="Email">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Password">
+                    <!-- <a href="#" class="forgot">Forgot password?</a> -->
+
+                    <button type="submit" class="login-btn">Log In</button>
+                </form>
+
+                <p id="loginError" class="text-danger mt-2 d-none"></p>
+
+
+                <p class="signup-text">
+                    Don't have an account? <a href="signup.html">Sign up</a>
+                </p>
+            </div>
+
+            <!-- RIGHT SIDE -->
+            <div class="col-lg-6 col-md-6 d-none d-md-flex right">
+                <div class="overlay-content">
+                    <h2>Farmer Bidding System</h2>
+                    <h3>Get the best price</h3>
+                    <p>Best quality food at the best price.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="../js/login.js"></script>
+
+</body>
+
+</html>

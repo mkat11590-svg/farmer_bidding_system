@@ -1,0 +1,62 @@
+/* ============================================
+   CONTACT US PAGE - MINIMAL CUSTOM CSS
+   ============================================ */
+
+/* Smooth transitions for form elements */
+.form-control:focus,
+.form-select:focus {
+    box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
+    border-color: #198754;
+}
+
+/* Card hover effect */
+.card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Social media button hover effects */
+.btn-outline-primary:hover,
+.btn-outline-info:hover,
+.btn-outline-danger:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+}
+
+/* Quick help links hover */
+.list-unstyled a {
+    transition: color 0.2s ease, padding-left 0.2s ease;
+    color: #212529;
+}
+
+.list-unstyled a:hover {
+    color: #198754;
+    padding-left: 5px;
+}
+
+/* Success message animation */
+#successMessage {
+    animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 991.98px) {
+    .card-body {
+        padding: 1.5rem !important;
+    }
+}

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Farm Auction System</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../css/bootstrap/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/signup.css">
+
+</head>
+
+<body class="d-flex align-items-center justify-content-center min-vh-100">
+
+    <div class="container signup-container">
+        <div class="row g-0">
+
+            <!-- LEFT SIDE - SIGNUP FORM -->
+            <div class="col-lg-6 col-md-12 left">
+                <h2>Welcome</h2>
+                <h1>Create Your Account</h1>
+
+                <form id="signupForm" action="../php/auth/signup_process.php" method="POST"> <!-- Alert Messages -->
+                    <div id="errorMessage" class="alert alert-danger"></div>
+                    <div id="successMessage" class="alert alert-success"></div>
+
+                    <!-- Full Name -->
+                    <div class="mb-3">
+                        <label for="fullName" class="form-label">
+                            <i class="fas fa-user"></i> Full Name
+                        </label>
+                        <input type="text" class="form-control" id="fullName" name="fullName"
+                            placeholder="Enter your full name" required>
+                    </div>
+
+                    <!-- CNIC -->
+                    <div class="mb-3">
+                        <label for="cnic" class="form-label">
+                            <i class="fas fa-id-card"></i> CNIC
+                        </label>
+                        <input type="text" class="form-control" id="cnic" name="cnic" placeholder="12345-1234567-1"
+                            pattern="\d{5}-\d{7}-\d{1}" required>
+                        <small class="text-muted">Format: 12345-1234567-1</small>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="mb-3">
+                        <label for="email" class="form-label">
+                            <i class="fas fa-envelope"></i> Email Address
+                        </label>
+                        <input type="email" class="form-control" id="email" name="email"
+                            placeholder="your.email@example.com" required>
+                    </div>
+
+                    <!-- Phone Number -->
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">
+                            <i class="fas fa-phone"></i> Phone Number
+                        </label>
+                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="+92 300 1234567"
+                            required>
+                    </div>
+
+                    <!-- User Type Selection -->
+                    <div class="mb-3">
+                        <label class="form-label">
+                            <i class="fas fa-user-tag"></i> I want to
+                        </label>
+                        <div class="user-type-selection">
+                            <label class="user-type-card">
+                                <input type="radio" name="userType" value="buyer" id="buyerRadio">
+                                <div class="card-content">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    <span>Buy Equipment</span>
+                                </div>
+                            </label>
+                            <label class="user-type-card">
+                                <input type="radio" name="userType" value="farmer" id="farmerRadio">
+                                <div class="card-content">
+                                    <i class="fas fa-tractor"></i>
+                                    <span>Sell Equipment</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Buyer-specific fields -->
+                    <div id="buyerFields" class="conditional-fields" style="display:none;">
+                        <h6 class="mb-3"><i class="fas fa-briefcase"></i> Buyer Information</h6>
+
+                        <div class="mb-3">
+                            <label for="buyerType" class="form-label">Buyer Type</label>
+                            <select class="form-select" id="buyerType" name="buyerType">
+                                <option value="">Select Buyer Type</option>
+                                <option value="individual">Individual</option>
+                                <option value="wholesaler">Wholesaler</option>
+                                <option value="retailer">Retailer</option>
+                                <option value="exporter">Exporter</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="companyName" class="form-label">Company Name (Optional)</label>
+                            <input type="text" class="form-control" id="companyName" name="companyName"
+                                placeholder="Your company name">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="businessReg" class="form-label">Business Registration Number (Optional)</label>
+                            <input type="text" class="form-control" id="businessReg" name="businessReg"
+                                placeholder="Business registration number">
+                        </div>
+                    </div>
+
+                    <!-- Farmer-specific fields -->
+                    <div id="farmerFields" class="conditional-fields" style="display:none;">
+                        <h6 class="mb-3"><i class="fas fa-leaf"></i> Farm Information</h6>
+
+                        <div class="mb-3">
+                            <label for="farmLocation" class="form-label">Farm Location</label>
+                            <textarea class="form-control" id="farmLocation" name="farmLocation" rows="2"
+                                placeholder="Enter your farm location"></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="farmSize" class="form-label">Farm Size (acres)</label>
+                            <input type="number" class="form-control" id="farmSize" name="farmSize"
+                                placeholder="Enter farm size" min="0">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="cropTypes" class="form-label">Crop Types</label>
+                            <input type="text" class="form-control" id="cropTypes" name="cropTypes"
+                                placeholder="e.g., Wheat, Rice, Corn">
+                        </div>
+                    </div>
+
+                    <!-- Address -->
+                    <div class="mb-3">
+                        <label for="address" class="form-label">
+                            <i class="fas fa-map-marker-alt"></i> Residential Address
+                        </label>
+                        <textarea class="form-control" id="address" name="address" rows="2"
+                            placeholder="Enter your address" required></textarea>
+                    </div>
+
+                    <!-- City & Country Row -->
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="city" class="form-label">City</label>
+                            <input type="text" class="form-control" id="city" name="city" placeholder="Your city"
+                                required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="country" class="form-label">Country</label>
+                            <select class="form-select" id="country" name="country" required>
+                                <option value="">Select Country</option>
+                                <option value="Pakistan">Pakistan</option>
+                                <option value="India">India</option>
+                                <option value="USA">USA</option>
+                                <option value="UK">UK</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="mb-3">
+                        <label for="password" class="form-label">
+                            <i class="fas fa-lock"></i> Password
+                        </label>
+                        <div class="password-wrapper">
+                            <input type="password" class="form-control" id="password" name="password"
+                                placeholder="Create a strong password" required>
+                            <button type="button" class="password-toggle" id="togglePassword">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="password-strength">
+                            <div class="strength-bar">
+                                <div class="strength-fill" id="strengthFill"></div>
+                            </div>
+                            <span class="strength-text" id="strengthText">Password strength</span>
+                        </div>
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div class="mb-3">
+                        <label for="confirmPassword" class="form-label">
+                            <i class="fas fa-lock"></i> Confirm Password
+                        </label>
+                        <div class="password-wrapper">
+                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
+                                placeholder="Confirm your password" required>
+                            <button type="button" class="password-toggle" id="toggleConfirmPassword">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Terms & Conditions -->
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="terms" name="terms" required>
+                        <label class="form-check-label" for="terms">
+                            I agree to the <a href="#" class="text-decoration-none">Terms & Conditions</a> and <a
+                                href="#" class="text-decoration-none">Privacy Policy</a>
+                        </label>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="signup-btn" id="signupBtn">
+                        Create Account
+                    </button>
+
+                    <!-- Social Divider -->
+                    <div class="social-divider">
+                        <span>OR</span>
+                    </div>
+
+                    <!-- Social Login -->
+                    <button type="button" class="social-btn social-btn-google">
+                        <i class="fab fa-google"></i>
+                        Sign up with Google
+                    </button>
+                    <button type="button" class="social-btn social-btn-facebook">
+                        <i class="fab fa-facebook-f"></i>
+                        Sign up with Facebook
+                    </button>
+
+                    <!-- Login Link -->
+                    <p class="login-link">
+                        Already have an account? <a href="login.html">Log In</a>
+                    </p>
+                </form>
+            </div>
+
+            <!-- RIGHT SIDE - HERO -->
+            <div class="col-lg-6 d-none d-lg-flex right">
+                <div class="overlay-content">
+                    <h2>Farm Auction System</h2>
+                    <h3>Join Our Community</h3>
+                    <p>Buy and sell farm equipment with confidence</p>
+
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Secure Bidding Platform</li>
+                        <li><i class="fas fa-check-circle"></i> Verified Sellers & Buyers</li>
+                        <li><i class="fas fa-check-circle"></i> Best Market Prices</li>
+                        <li><i class="fas fa-check-circle"></i> 24/7 Support</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="../js/signup.js"></script>
+
+</body>
+
+</html>
